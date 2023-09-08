@@ -175,12 +175,17 @@ console.log(three());
 let globalVar = 'Globalization';
 console.log(globalVar);
 function changeGlobal(){
-    globalVar = 'Changed Globalization'
-    return globalVar
+    return () => {
+      globalVar = 'Changed Globalization'
+      return globalVar
+    }
 }
-changeGlobal()
+const changed = changeGlobal();
+console.log(changed());
 console.log(globalVar);
-function changeLocal(){
-  localVar = 'changed local';
-  let localVar = 'Localized';
-}
+// function changeLocal(){
+//   localVar = 'changed local';
+//   let localVar = 'Localized';
+//   return localVar
+// }
+// console.log(changeLocal())
